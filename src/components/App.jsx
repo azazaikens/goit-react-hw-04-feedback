@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { FeedbackOptions } from './Feedback/Feedback';
 import { Statics } from './Statistics/Statistics';
 import { Section } from './Section/Section';
+import { Notification } from './Notification/Notification';
 
 export const App = () => {
   const [feedback, setFeedback] = useState({ good: 0, neutral: 0, bad: 0 });
@@ -43,16 +44,21 @@ export const App = () => {
             onResetFeedback={handleResetFeedback}
           />
         </Section>
-        <Section>
-          <Statics
-            good={good}
-            neutral={neutral}
-            bad={bad}
-            total={total}
-            positivePercentage={positivePercentage}
-            onClick={onClickResetForm}
-          />
-        </Section>
+
+        {total ? (
+          <Section>
+            <Statics
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              total={total}
+              positivePercentage={positivePercentage}
+              onClick={onClickResetForm}
+            />
+          </Section>
+        ) : (
+          <Notification message={'There is no feedback'} />
+        )}
       </div>
     );
 }
