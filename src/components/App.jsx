@@ -40,6 +40,7 @@ export const App = () => {
       >
         <Section title="Please leave feedback">
           <FeedbackOptions
+            options={feedback}
             onLeaveFeedback={handleLeaveFeedback}
             onResetFeedback={handleResetFeedback}
           />

@@ -1,9 +1,23 @@
 import React from 'react';
 
 const FeedbackOptions = ({ options, onLeaveFeedback }) => {
+  const optionsArray = Object.keys(options);
   return (
-    <div>
-      <ul
+    <div style={{
+      display: 'flex',
+      gap: '20px',
+
+    }}>
+      {optionsArray.map(option => (
+        <button
+          key={option}
+          type="button"
+          onClick={() => onLeaveFeedback(option)}
+        >
+          {option}
+        </button>
+      ))}
+      {/* <ul
         style={{
           listStyle: 'none',
           display: 'flex',
@@ -37,7 +51,7 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
             Bad
           </button>
         </li>
-      </ul>
+      </ul> */}
     </div>
   );
 };
